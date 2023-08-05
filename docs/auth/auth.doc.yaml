@@ -1,0 +1,106 @@
+paths:
+  /api/register:
+    post:
+      tags:
+        - Auth
+      summary: Register user
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: Register user parameter
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                example: "Rina Pratama"
+              email:
+                type: string
+                example: "rianapratama@domain.com"
+              password:
+                type: sring
+                example: "rinapratama"
+      responses:
+        200:
+          description: Regiser successfully
+          schema:
+            type: object
+            properties:
+              message:
+                example: "Register successfully"
+        422:
+          description: Data invalid
+          schema:
+            type: object
+            properties:
+              code:
+                example: 422
+              message:
+                example: "Data is exists"
+  /api/login:
+    post:
+      tags:
+        - Auth
+      summary: Login user
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: Login user parameter
+          schema:
+            type: object
+            properties:
+              email:
+                type: string
+                example: "agus@domain.com"
+              password:
+                type: string
+                example: "agusbudiyanto"
+      responses:
+        200:
+          description: Login successfully
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        example: "b063fd12-3616-4fcb-9c01-c5871af81d9f"
+                      name:
+                        example: "Agus Budiyanto"
+                      email:
+                        example: "agus@domain.com"
+                  token:
+                    example: "b063fd12-3616-4fcb-9c01-c5871af81d9f"
+        404:
+          description: Not found data
+          schema:
+            type: object
+            properties:
+              code:
+                example: 404
+              message:
+                example: "Email not exists"
+        401:
+          description: Wrong email or password
+          schema:
+            type: object
+            properties:
+              code:
+                example: 401
+              message:
+                example: "Email or password missmatch"
+        422:
+          description: Validation exception
+          schema:
+            type: object
+            properties:
+              code:
+                example: 422
+              message:
+                example: "\"email\" is required"
