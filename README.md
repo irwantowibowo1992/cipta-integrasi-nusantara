@@ -1,0 +1,3 @@
+- npm install
+- npx knex migrate:up
+- npm run start
