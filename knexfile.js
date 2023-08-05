@@ -10,7 +10,7 @@ module.exports = {
         password: process.env.DB_PASS,
       },
       ssl: {
-        rejectUnauthorized: false,
+        rejectUnauthorized: true,
       },
       pool: {
         min: 2,
@@ -33,7 +33,7 @@ module.exports = {
       password: process.env.POSTGRES_PASSWORD,
     },
     ssl: {
-      rejectUnauthorized: false,
+      rejectUnauthorized: true,
     },
     pool: {
       min: 2,
