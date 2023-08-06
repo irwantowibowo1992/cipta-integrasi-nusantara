@@ -24,6 +24,29 @@ module.exports = {
       },
   },
 
+  test: {
+    client: 'pg',
+      connection: {
+        host: process.env.DB_HOST_TEST,
+        database: process.env.DB_NAME_TEST,
+        user: process.env.DB_USER_TEST,
+        password: process.env.DB_PASS_TEST,
+      },
+      ssl: {
+        rejectUnauthorized: false,
+      },
+      pool: {
+        min: 2,
+        max: 10,
+      },
+      migrations: {
+        directory: './db/migrations_test',
+      },
+      seeds: {
+        directory: './db/seeds_test',
+      },
+  },
+
   production: {
     client: 'pg',
     connection: {
